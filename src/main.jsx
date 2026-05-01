@@ -8,6 +8,7 @@ import TheAreas from './page/the-areas'
 import Apropos from './page/apropos'
 import Contact from './page/contact'
 import Service from './page/service'
+import Gallery from './page/service'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/apropos" element={<Layout><Apropos /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/service" element={<Layout><Service /></Layout>} />
+        <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Import des images
 import mariageImg from '../assets/service/concer.jpeg';
 import anniversaireImg from '../assets/service/mariage3.jpeg';
@@ -8,10 +6,13 @@ import concert2 from '../assets/service/concer2.jpeg';
 import concert3 from '../assets/service/concer3.jpeg';
 import chambreImg from '../assets/service/mariage1.jpeg';
 import salleImg from '../assets/service/mariage2.jpeg';
+import Sidebar from '../component/layout/sidebar';
 
 const Services = () => {
   return (
+
     <div className="max-w-[1400px] mx-auto px-4 md:px-8 py-8 font-['Poppins']">
+            <Sidebar />
       {/* Header */}
       <header className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl text-[#2c1810] font-['Playfair_Display'] mb-2">Nos Services</h1>

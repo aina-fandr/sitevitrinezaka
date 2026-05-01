@@ -62,8 +62,9 @@ function Sidebar() {
                         {/* Address */}
                         <div className="text-white/80 text-sm">
                             <a
-                                href="https://maps.app.goo.gl/DvztXX4DnNSDGTFA7"
-                                className="hover:text-[#c4a747] transition-colors"
+                                href="https://maps.app.goo.gl/622psi6kpAJTrds19"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <i className="fas fa-map-marker-alt mr-2 text-[#c4a747]"></i>
                                 Vangaindrano, 24 bis 08007

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // Import de toutes vos images
 import image1 from '../assets/gallery/image1.jpeg';
@@ -14,6 +14,20 @@ import image9 from '../assets/gallery/image9.jpeg';
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState('all');
+
+  // Gestion du scroll body avec useEffect
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Cleanup au démontage
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedImage]);
 
   // Liste des images
   const images = [
@@ -41,12 +55,10 @@ const Gallery = () => {
 
   const openModal = (image) => {
     setSelectedImage(image);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedImage(null);
-    document.body.style.overflow = 'auto';
   };
 
   const nextImage = () => {
@@ -138,11 +150,11 @@ const Gallery = () => {
       {/* Modale */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center animate-fadeIn"
+          className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center"
           onClick={closeModal}
         >
           <div
-            className="relative max-w-[90%] max-h-[90%] animate-slideUp"
+            className="relative max-w-[90%] max-h-[90%]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
