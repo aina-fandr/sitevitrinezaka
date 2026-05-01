@@ -35,7 +35,7 @@ function Accueil() {
                 />
 
                 {/* Dark Overlay principal */}
-                <div className="fixed inset-0 bg-black/60 -z-10" />
+                <div className=" fixed inset-0 bg-black/60 -z-10" />
 
                 {/* Hero Content */}
                 <div style={{ backgroundImage: "url('acc1.jpg')" }} className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-200px)] px-8 py-16">
@@ -80,12 +80,12 @@ function Accueil() {
             </main>
 
             {/* Section THE AREAS */}
-            <section className="relative py-12 bg-black">
+            <section  className=" min-h-screen relative py-12 bg-black">
                 <div className="relative z-10 px-4 max-w-6xl mx-auto">
                     {/* Titre THE AREAS */}
                     <div className="text-center mb-8">
                         <h2 className="text-3xl md:text-4xl uppercase font-bold tracking-wide text-white mb-3">
-                            THE AREAS
+                            LA RÉGION
                         </h2>
                         <div className="w-12 h-0.5 bg-[#c4a747] mx-auto mb-4"></div>
                         <p className="text-lg md:text-xl text-white mb-2">What do you fancy today?</p>

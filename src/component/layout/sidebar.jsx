@@ -131,14 +131,15 @@ function Sidebar() {
                                     href="/the-restaurant"
                                     className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
                                 >
-                                    The restaurant
+                                    
+                                    Le restaurant
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                                 <a
                                     href="/the-areas"
                                     className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
                                 >
-                                    The areas
+                                    la région
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                                 <div className="relative group">
@@ -177,7 +178,7 @@ function Sidebar() {
                                     href="/gift-card"
                                     className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
                                 >
-                                    Gift card
+                                   carte-cadeau
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                                 <a
