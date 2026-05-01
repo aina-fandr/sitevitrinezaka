@@ -34,10 +34,10 @@ function TheAreas() {
         <div className="fixed inset-0 bg-black/70 -z-10" />
 
         {/* HERO */}
-        <section className=" min-h-screen flex items-center justify-center text-center px-6">
+        <section className="min-h-screen flex items-center justify-center text-center px-6">
           <div>
             <h1 className="text-4xl md:text-5xl uppercase text-white font-bold mb-4 tracking-wide">
-             la région
+              la région
             </h1>
             <div className="w-12 h-[2px] bg-[#c4a747] mx-auto mb-6"></div>
             <p className="text-white/80 max-w-xl text-sm md:text-base">
@@ -70,7 +70,6 @@ function TheAreas() {
                       <a href="/mariage" className="mt-6 text-[#c4a747] hover:text-white text-sm uppercase tracking-wider transition">
                         [SEE MORE]
                       </a>
-
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">Mariage</h3>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">-</h3>
                     </div>
@@ -83,7 +82,7 @@ function TheAreas() {
                   <div className="relative h-full w-full overflow-hidden">
                     <img src="/rest2.jpg" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
                     <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-300 flex flex-col items-center justify-center text-center px-4">
-                      -                      <div className="text-[#c4a747] text-2xl mt-2">···</div>
+                      <div className="text-[#c4a747] text-2xl mt-2">···</div>
                       <p className="text-white/80 mt-4 text-sm max-w-xs">
                         Restaurant specialised in griddled, baked, grilled and steamed fish.
                       </p>
@@ -92,7 +91,6 @@ function TheAreas() {
                       </a>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">Famille</h3>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">-</h3>
-
                     </div>
                   </div>
                 </div>
@@ -115,7 +113,6 @@ function TheAreas() {
                       </a>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">Reunion</h3>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">-</h3>
-
                     </div>
                   </div>
                 </div>
@@ -135,7 +132,6 @@ function TheAreas() {
                       </a>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">Fiance</h3>
                       <h3 className="text-white text-2xl md:text-3xl uppercase font-bold tracking-wider">-</h3>
-
                     </div>
                   </div>
                 </div>
@@ -168,7 +164,6 @@ function TheAreas() {
                       </a>
                       <h3 className="text-white text-3xl md:text-4xl uppercase font-bold tracking-wider">CERVEZAS</h3>
                       <h3 className="text-white text-3xl md:text-4xl uppercase font-bold tracking-wider">-</h3>
-
                     </div>
                   </div>
                 </div>
@@ -186,7 +181,6 @@ function TheAreas() {
                       </a>
                       <h3 className="text-white text-3xl md:text-4xl uppercase font-bold tracking-wider">VINOS</h3>
                       <h3 className="text-white text-3xl md:text-4xl uppercase font-bold tracking-wider">-</h3>
-
                     </div>
                   </div>
                 </div>
@@ -207,7 +201,6 @@ function TheAreas() {
                       </a>
                       <h3 className="text-white text-3xl md:text-4xl uppercase font-bold tracking-wider">OSTRAS</h3>
                       <h3 className="text-white text-3xl md:text-4xl uppercase font-bold tracking-wider">-</h3>
-
                     </div>
                   </div>
                 </div>

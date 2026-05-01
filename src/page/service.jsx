@@ -1,13 +1,13 @@
 import React from 'react';
 
 // Import des images
-import mariageImg from '../../assets/services/mariage.jpeg';
-import anniversaireImg from '../../assets/services/anniversaire.jpeg';
-import concert1 from '../../assets/services/concert1.jpeg';
-import concert2 from '../../assets/services/concert2.jpeg';
-import concert3 from '../../assets/services/concert3.jpeg';
-import chambreImg from '../../assets/services/chambre.jpeg';
-import salleImg from '../../assets/services/salle.jpeg';
+import mariageImg from '../assets/service/concer.jpeg';
+import anniversaireImg from '../assets/service/mariage3.jpeg';
+import concert1 from '../assets/service/concer1.jpeg';
+import concert2 from '../assets/service/concer2.jpeg';
+import concert3 from '../assets/service/concer3.jpeg';
+import chambreImg from '../assets/service/mariage1.jpeg';
+import salleImg from '../assets/service/mariage2.jpeg';
 
 const Services = () => {
   return (

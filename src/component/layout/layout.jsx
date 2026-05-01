@@ -1,16 +1,15 @@
-import { Outlet } from 'react-router-dom'
-import Sidebar from './sidebar.jsx'
+// component/layout/layout.jsx
+import Footer from './footer';
 
-export default function Layout() {
+const Layout = ({ children }) => {
   return (
-    <div className="flex h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
-      <Sidebar />
-      
-      <main className="flex-1 overflow-y-auto">
-        <div className="p-6 md:p-8">
-          <Outlet />
-        </div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <main style={{ flex: 1 }}>
+        {children}
       </main>
+      <Footer />
     </div>
-  )
-}
+  );
+};
+
+export default Layout;

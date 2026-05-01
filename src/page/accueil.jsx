@@ -167,32 +167,6 @@ function Accueil() {
                     </div>
                 </div>
             </section>
-
-            {/* Footer / Contact Section */}
-            <footer className="relative bg-black/90 py-12 border-t border-white/10">
-                <div className="container mx-auto px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                        <div>
-                            <i className="fas fa-map-marker-alt text-[#c4a747] text-2xl mb-3"></i>
-                            <p className="text-white/70 text-sm">Passeig de Gràcia, 24 bis</p>
-                            <p className="text-white/70 text-sm">08007 Barcelona</p>
-                        </div>
-                        <div>
-                            <i className="fas fa-phone text-[#c4a747] text-2xl mb-3"></i>
-                            <p className="text-white/70 text-sm">+34 123 456 789</p>
-                            <p className="text-white/70 text-sm">info@restoezaka.com</p>
-                        </div>
-                        <div>
-                            <i className="fas fa-clock text-[#c4a747] text-2xl mb-3"></i>
-                            <p className="text-white/70 text-sm">Open Every day</p>
-                            <p className="text-white/70 text-sm">13:00 - 16:00 | 20:00 - 23:30</p>
-                        </div>
-                    </div>
-                    <div className="text-center mt-8 pt-8 border-t border-white/10">
-                        <p className="text-white/50 text-xs">© 2024 RESTO EZAKA. All rights reserved.</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     );
 }
