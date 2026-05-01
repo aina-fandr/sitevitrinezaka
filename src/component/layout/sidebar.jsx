@@ -175,10 +175,10 @@ function Sidebar() {
                             {/* Right Menu */}
                             <nav className="flex flex-col md:flex-row gap-4 md:gap-8">
                                 <a
-                                    href="/gift-card"
+                                    href="/service"
                                     className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
                                 >
-                                   carte-cadeau
+                                   Service
                                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                                 <a
