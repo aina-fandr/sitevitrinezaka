@@ -1,119 +1,206 @@
-import { NavLink, useNavigate } from 'react-router-dom'
-import { useAuth } from '../../context/AuthContext'
+import { useState, useEffect } from 'react';
 
-const navItems = [
-  {
-    to: '/dashboard',
-    label: 'Tableau de bord',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-      </svg>
-    ),
-  },
-  {
-    to: '/etudiants',
-    label: 'Étudiants',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-          d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-  },
-  {
-    to: '/classes',
-    label: 'Classes /Niveau',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-  },
-  {
-    to: '/paiements',
-    label: 'Paiements',
-    icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-          d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-      </svg>
-    ),
-  },
-]
+function Sidebar() {
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-export default function Sidebar() {
-  const { user, logout } = useAuth()
-  const navigate = useNavigate()
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
 
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-  return (
-    <aside className="w-[12rem] bg-black/30 backdrop-blur-xl border-r border-white/10 flex flex-col h-screen">
-      {/* Logo Section - minimal */}
-      <div className="px-4 py-5 border-b border-white/10">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-gradient-to-br from-violet-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <span className="text-white text-sm font-bold">G</span>
+    return (
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+                ? 'bg-black/95 backdrop-blur-md py-0 shadow-lg'
+                : 'bg-black/90 backdrop-blur-sm py-2'
+            } border-b border-white/10`}>
+
+            {/* SECTION 1: Top bar - Social + Address + Language */}
+            <div className={`border-b border-white/10 transition-all duration-500 overflow-hidden ${isScrolled ? 'h-0 opacity-0 border-0' : 'h-auto opacity-100'
+                }`}>
+                <div className="container mx-auto px-4 py-3">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        {/* Social Icons */}
+                        <div className="flex gap-4">
+                            <a
+                                href="https://www.facebook.com/elnacionalbcn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c4a747] transition-all duration-300 hover:scale-110"
+                                aria-label="Facebook"
+                            >
+                                <i className="fab fa-facebook-f text-white text-sm"></i>
+                            </a>
+                            <a
+                                href="https://instagram.com/elnacionalbcn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c4a747] transition-all duration-300 hover:scale-110"
+                                aria-label="Instagram"
+                            >
+                                <i className="fab fa-instagram text-white text-sm"></i>
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/company/el-nacional-bcn"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#c4a747] transition-all duration-300 hover:scale-110"
+                                aria-label="LinkedIn"
+                            >
+                                <i className="fab fa-linkedin text-white text-sm"></i>
+                            </a>
+                        </div>
+
+                        {/* Address */}
+                        <div className="text-white/80 text-sm">
+                            <a
+                                href="https://maps.app.goo.gl/DvztXX4DnNSDGTFA7"
+                                className="hover:text-[#c4a747] transition-colors"
+                            >
+                                <i className="fas fa-map-marker-alt mr-2 text-[#c4a747]"></i>
+                                Vangaindrano, 24 bis 08007
+                            </a>
+                        </div>
+
+                        {/* Right Menu */}
+                        <div className="flex gap-6">
+                            <a
+                                href="/how-to-reach-us"
+                                className="text-white/80 hover:text-[#c4a747] transition-colors text-sm"
+                            >
+                                <i className="fas fa-directions mr-1"></i> How to reach us
+                            </a>
+                            <div className="flex gap-3 text-sm border-l border-white/20 pl-6">
+                                <a href="/es" className="text-white/60 hover:text-[#c4a747] transition-colors">ESP</a>
+                                <a href="/ca" className="text-white/60 hover:text-[#c4a747] transition-colors">CAT</a>
+                                <a href="/en" className="text-[#c4a747] font-medium">EN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* SECTION 2: Main Logo
+      <div className={`transition-all duration-500 ${
+        isScrolled ? 'py-2' : 'py-6'
+      }`}>
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <a href="/" className="inline-block group">
+              <img 
+                src="acc1.jpg" 
+                alt="El Nacional Barcelona" 
+                className={`transition-all duration-500 ${
+                  isScrolled ? 'h-10 md:h-12' : 'h-16 md:h-20'
+                } w-auto group-hover:opacity-80`}
+              />
+            </a>
           </div>
-          <h1 className="text-sm font-semibold text-white">GestioSco</h1>
         </div>
-      </div>
+      </div> */}
 
-      {/* Navigation */}
-      <nav className="flex-1 px-3 py-4">
-        <div className="space-y-0.5">
-          {navItems.map(({ to, label, icon }) => (
-            <NavLink
-              key={to}
-              to={to}
-              className={({ isActive }) =>
-                `flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 ${
-                  isActive
-                    ? 'bg-violet-600/40 text-white'
-                    : 'text-white/50 hover:text-white hover:bg-white/5'
-                }`
-              }
-            >
-              {icon}
-              {label}
-            </NavLink>
-          ))}
-        </div>
-      </nav>
+            {/* SECTION 3: Main Navigation */}
+            <div className={`border-t border-white/10 transition-all duration-500 ${isScrolled ? 'py-1' : 'py-0'
+                }`}>
+                <div className="container mx-auto px-4">
+                    {/* Mobile menu button */}
+                    <div className="md:hidden flex justify-center py-3">
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="text-white p-2 hover:text-[#c4a747] transition-colors"
+                            aria-label="Menu"
+                        >
+                            <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+                        </button>
+                    </div>
 
-      {/* User Section */}
-      <div className="p-3 border-t border-white/10">
-        <div className="flex items-center gap-2 px-2 py-1.5">
-          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-            <span className="text-white text-[10px] font-bold">
-              {user?.nomComplet?.charAt(0) ?? 'A'}
-            </span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-white/80 text-[11px] font-medium truncate">
-              {user?.nomComplet ?? 'Admin'}
-            </p>
-            <p className="text-white/30 text-[10px] truncate">Admin</p>
-          </div>
-        </div>
-        
-        <button
-          onClick={handleLogout}
-          className="w-full mt-2 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-md text-[10px] font-medium text-white/40 hover:text-white/80 hover:bg-white/5 transition-all"
-        >
-          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-          </svg>
-          Déconnexion
-        </button>
-      </div>
-    </aside>
-  )
+                    {/* Navigation Links */}
+                    <div className={`${isMenuOpen ? 'block' : 'hidden'} md:block py-4 md:py-2`}>
+                        <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+                            {/* Left Menu */}
+                            <nav className="flex flex-col md:flex-row gap-4 md:gap-8">
+                                <a
+                                    href="/the-restaurant"
+                                    className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
+                                >
+                                    The restaurant
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                                <a
+                                    href="/the-areas"
+                                    className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
+                                >
+                                    The areas
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                                <div className="relative group">
+                                    <a
+                                        href="/gallery"
+                                        className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium flex items-center gap-1"
+                                    >
+                                        Gallery
+                                        <i className="fas fa-chevron-down text-[10px]"></i>
+                                    </a>
+                                    {/* Dropdown menu */}
+                                    <div className="absolute top-full left-0 mt-2 bg-black/95 backdrop-blur-md rounded-md p-2 min-w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-xl">
+                                        <a href="/image-gallery" className="block px-4 py-2 text-white/80 hover:text-[#c4a747] hover:bg-white/5 text-sm rounded">
+                                            <i className="fas fa-image mr-2"></i> Image Gallery
+                                        </a>
+                                        <a href="/video-gallery" className="block px-4 py-2 text-white/80 hover:text-[#c4a747] hover:bg-white/5 text-sm rounded">
+                                            <i className="fas fa-video mr-2"></i> Movies
+                                        </a>
+                                    </div>
+                                </div>
+                            </nav>
+
+                            {/* Small logo that appears when scrolled */}
+                            <div className={`transition-all duration-500 ${isScrolled ? 'opacity-100 visible' : 'opacity-0 invisible hidden md:block'
+                                }`}>
+                                <img
+                                    src="https://www.elnacionalbcn.com/wp-content/uploads/2018/10/logo_p_transparent.png"
+                                    alt="El Nacional"
+                                    className="h-8 md:h-10 w-auto"
+                                />
+                            </div>
+
+                            {/* Right Menu */}
+                            <nav className="flex flex-col md:flex-row gap-4 md:gap-8">
+                                <a
+                                    href="/gift-card"
+                                    className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
+                                >
+                                    Gift card
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                                <a
+                                    href="/reservation"
+                                    className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
+                                >
+                                    Reservation
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                                <a
+                                    href="/groups"
+                                    className="text-white hover:text-[#c4a747] transition-colors text-xs md:text-sm uppercase tracking-wide font-medium relative group"
+                                >
+                                    Groups
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#c4a747] transition-all duration-300 group-hover:w-full"></span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    );
 }
+
+export default Sidebar;
