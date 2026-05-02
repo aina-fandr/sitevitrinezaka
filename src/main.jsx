@@ -8,7 +8,7 @@ import TheAreas from './page/the-areas'
 import Apropos from './page/apropos'
 import Contact from './page/contact'
 import Service from './page/service'
-import Gallery from './page/service'
+import Gallery from './page/gallery'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
