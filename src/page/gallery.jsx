@@ -8,6 +8,8 @@ import image5 from '../assets/image5.jpg';
 import image6 from '../assets/image6.jpg';
 import image7 from '../assets/image7.jpg';
 import image8 from '../assets/image8.jpg';
+import Sidebar from '../component/layout/sidebar';
+
 // Note: image1.jpg n'existe pas, utilisez une autre image ou ajoutez-la
 
 export default function Gallery() {
@@ -78,6 +80,7 @@ export default function Gallery() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-8 md:py-12 text-center font-['Poppins'] bg-[#f9f5f0] min-h-screen">
+      <Sidebar />
       <header className="mb-8 md:mb-12">
         <h1 className="text-2xl md:text-4xl tracking-[5px] font-light mb-2 text-[#2c1810] font-['Playfair_Display']">
           NOTRE GALERIE
