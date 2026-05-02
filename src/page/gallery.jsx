@@ -1,45 +1,42 @@
 import { useState, useEffect } from 'react';
 
-// Import de toutes vos images
-import image1 from '../assets/gallery/image1.jpeg';
-import image2 from '../assets/gallery/image2.jpeg';
-import image3 from '../assets/gallery/image3.jpeg';
-import image4 from '../assets/gallery/image4.jpeg';
-import image5 from '../assets/gallery/image5.jpeg';
-import image6 from '../assets/gallery/image6.jpeg';
-import image7 from '../assets/gallery/image7.jpeg';
-import image8 from '../assets/gallery/image8.jpeg';
-import image9 from '../assets/gallery/image9.jpeg';
+// Import de toutes vos images (corrigé)
+import image2 from '../assets/image2.jpg';
+import image3 from '../assets/image3.jpg';
+import image4 from '../assets/image4.jpg';
+import image5 from '../assets/image5.jpg';
+import image6 from '../assets/image6.jpg';
+import image7 from '../assets/image7.jpg';
+import image8 from '../assets/image8.jpg';
+// Note: image1.jpg n'existe pas, utilisez une autre image ou ajoutez-la
 
-const Gallery = () => {
+export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [filter, setFilter] = useState('all');
 
-  // Gestion du scroll body avec useEffect
   useEffect(() => {
     if (selectedImage) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-    
-    // Cleanup au démontage
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [selectedImage]);
 
-  // Liste des images
+  // Liste des images avec les fichiers disponibles
   const images = [
-    { id: 1, url: image1, title: 'Plat Signature', category: 'plats', description: 'Notre spécialité du chef' },
-    { id: 2, url: image2, title: 'Décoration Intérieure', category: 'ambiance', description: 'Ambiance chaleureuse et élégante' },
-    { id: 3, url: image3, title: 'Entrée Fraîcheur', category: 'plats', description: 'Création de saison' },
-    { id: 4, url: image4, title: 'Notre Terrasse', category: 'ambiance', description: 'Profitez de nos repas en extérieur' },
-    { id: 5, url: image5, title: 'Dessert Gourmand', category: 'plats', description: 'Doux plaisirs sucrés' },
-    { id: 6, url: image6, title: 'Cocktail Maison', category: 'boissons', description: 'Nos mixologistes à l\'œuvre' },
-    { id: 7, url: image7, title: 'Salle Privée', category: 'ambiance', description: 'Pour vos événements privés' },
-    { id: 8, url: image8, title: 'Notre Équipe', category: 'ambiance', description: 'Des professionnels à votre service' },
-    { id: 9, url: image9, title: 'Carte des Vins', category: 'boissons', description: 'Sélection exceptionnelle de vins' },
+    { id: 1, url: image2, title: 'Plat Signature', category: 'plats', description: 'Notre spécialité du chef' },
+    { id: 2, url: image3, title: 'Décoration Intérieure', category: 'ambiance', description: 'Ambiance chaleureuse et élégante' },
+    { id: 3, url: image4, title: 'Entrée Fraîcheur', category: 'plats', description: 'Création de saison' },
+    { id: 4, url: image5, title: 'Notre Terrasse', category: 'ambiance', description: 'Profitez de nos repas en extérieur' },
+    { id: 5, url: image6, title: 'Dessert Gourmand', category: 'plats', description: 'Doux plaisirs sucrés' },
+    { id: 6, url: image7, title: 'Cocktail Maison', category: 'boissons', description: 'Nos mixologistes à l\'œuvre' },
+    { id: 7, url: image8, title: 'Salle Privée', category: 'ambiance', description: 'Pour vos événements privés' },
+    // Vous pouvez dupliquer certaines images ou en ajouter d'autres
+    { id: 8, url: image2, title: 'Notre Équipe', category: 'ambiance', description: 'Des professionnels à votre service' },
+    { id: 9, url: image3, title: 'Carte des Vins', category: 'boissons', description: 'Sélection exceptionnelle de vins' },
   ];
 
   const categories = [
@@ -49,25 +46,20 @@ const Gallery = () => {
     { id: 'boissons', label: 'Boissons', icon: '🍷' },
   ];
 
-  const filteredImages = filter === 'all' 
-    ? images 
-    : images.filter(img => img.category === filter);
+  const filteredImages = filter === 'all' ? images : images.filter(img => img.category === filter);
 
-  const openModal = (image) => {
-    setSelectedImage(image);
-  };
-
-  const closeModal = () => {
-    setSelectedImage(null);
-  };
+  const openModal = (image) => setSelectedImage(image);
+  const closeModal = () => setSelectedImage(null);
 
   const nextImage = () => {
+    if (!selectedImage) return;
     const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
     const nextIndex = (currentIndex + 1) % filteredImages.length;
     setSelectedImage(filteredImages[nextIndex]);
   };
 
   const prevImage = () => {
+    if (!selectedImage) return;
     const currentIndex = filteredImages.findIndex(img => img.id === selectedImage.id);
     const prevIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
     setSelectedImage(filteredImages[prevIndex]);
@@ -82,11 +74,10 @@ const Gallery = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage, filteredImages]);
+  }, [selectedImage]);
 
   return (
-    <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-8 md:py-12 text-center font-['Poppins'] bg-[#f9f5f0]">
-      {/* Header */}
+    <div className="max-w-[1400px] mx-auto px-4 md:px-6 py-8 md:py-12 text-center font-['Poppins'] bg-[#f9f5f0] min-h-screen">
       <header className="mb-8 md:mb-12">
         <h1 className="text-2xl md:text-4xl tracking-[5px] font-light mb-2 text-[#2c1810] font-['Playfair_Display']">
           NOTRE GALERIE
@@ -100,7 +91,6 @@ const Gallery = () => {
         </p>
       </header>
 
-      {/* Filtres */}
       <div className="flex justify-center gap-2 md:gap-4 flex-wrap mb-8 md:mb-10">
         {categories.map(cat => (
           <button
@@ -118,7 +108,6 @@ const Gallery = () => {
         ))}
       </div>
 
-      {/* Grille d'images */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mt-4">
         {filteredImages.map((img) => (
           <div
@@ -140,46 +129,19 @@ const Gallery = () => {
         ))}
       </div>
 
-      {/* Message aucun résultat */}
       {filteredImages.length === 0 && (
         <div className="text-center py-16 text-gray-400">
           <p>Aucune image dans cette catégorie</p>
         </div>
       )}
 
-      {/* Modale */}
       {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center"
-          onClick={closeModal}
-        >
-          <div
-            className="relative max-w-[90%] max-h-[90%]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={closeModal}
-              className="absolute -top-10 right-0 text-white text-3xl hover:text-[#ffd700] hover:scale-110 transition-transform"
-            >
-              ✕
-            </button>
-            <button
-              onClick={prevImage}
-              className="absolute left-[-40px] md:left-[-60px] top-1/2 -translate-y-1/2 bg-white/20 text-white text-2xl md:text-4xl px-2 md:px-4 py-1 md:py-2 rounded-full hover:bg-[#ffd700]/80 hover:text-[#2c1810] transition-all hidden md:block"
-            >
-              ‹
-            </button>
-            <img
-              src={selectedImage.url}
-              alt={selectedImage.title}
-              className="max-w-full max-h-[80vh] rounded-xl shadow-2xl"
-            />
-            <button
-              onClick={nextImage}
-              className="absolute right-[-40px] md:right-[-60px] top-1/2 -translate-y-1/2 bg-white/20 text-white text-2xl md:text-4xl px-2 md:px-4 py-1 md:py-2 rounded-full hover:bg-[#ffd700]/80 hover:text-[#2c1810] transition-all hidden md:block"
-            >
-              ›
-            </button>
+        <div className="fixed inset-0 bg-black/95 z-[2000] flex items-center justify-center" onClick={closeModal}>
+          <div className="relative max-w-[90%] max-h-[90%]" onClick={(e) => e.stopPropagation()}>
+            <button onClick={closeModal} className="absolute -top-10 right-0 text-white text-3xl hover:text-[#ffd700] hover:scale-110 transition-transform">✕</button>
+            <button onClick={prevImage} className="absolute left-[-40px] md:left-[-60px] top-1/2 -translate-y-1/2 bg-white/20 text-white text-2xl md:text-4xl px-2 md:px-4 py-1 md:py-2 rounded-full hover:bg-[#ffd700]/80 hover:text-[#2c1810] transition-all hidden md:block">‹</button>
+            <img src={selectedImage.url} alt={selectedImage.title} className="max-w-full max-h-[80vh] rounded-xl shadow-2xl" />
+            <button onClick={nextImage} className="absolute right-[-40px] md:right-[-60px] top-1/2 -translate-y-1/2 bg-white/20 text-white text-2xl md:text-4xl px-2 md:px-4 py-1 md:py-2 rounded-full hover:bg-[#ffd700]/80 hover:text-[#2c1810] transition-all hidden md:block">›</button>
             <div className="absolute -bottom-12 left-0 right-0 text-center text-white bg-black/70 p-3 rounded-lg">
               <h3 className="text-[#ffd700] mb-1 font-bold">{selectedImage.title}</h3>
               <p className="text-sm">{selectedImage.description}</p>
@@ -189,6 +151,4 @@ const Gallery = () => {
       )}
     </div>
   );
-};
-
-export default Gallery;
+}
